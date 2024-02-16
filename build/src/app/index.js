@@ -24,14 +24,10 @@ function initServer() {
         app.use(body_parser_1.default.json());
         const server = new server_1.ApolloServer({
             typeDefs: `
-    ${user_1.User.types}
-    type Query {
-    ${user_1.User.queries}
-  }
-  `,
-            resolvers: {
-                Query: Object.assign({}, user_1.User.resolvers.queries)
-            },
+      ${user_1.User.types}
+      ${user_1.User.queries}
+    `,
+            resolvers: Object.assign({}, user_1.User.resolvers),
         });
         yield server.start();
         app.use('/graphql', (0, express4_1.expressMiddleware)(server));

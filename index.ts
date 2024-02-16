@@ -1,4 +1,4 @@
-import { initServer } from "./app";
+import { initServer } from "./src/app";
 
 
 async function init(){

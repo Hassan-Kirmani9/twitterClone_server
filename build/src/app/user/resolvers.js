@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = require("./src/app");
-function init() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const app = yield (0, app_1.initServer)();
-        app.listen(8000, () => console.log("S"));
-    });
-}
-init();
+exports.resolvers = void 0;
+// user/resolvers.ts
+exports.resolvers = {
+    Query: {
+        verifyGoogleToken: (parent, { token }) => __awaiter(void 0, void 0, void 0, function* () {
+            return token;
+        }),
+    },
+};
