@@ -20,6 +20,10 @@ export async function initServer() {
 
   await server.start();
 
-  app.use('/graphql', expressMiddleware(server));
+  app.use('/graphql', expressMiddleware(server, 
+  {context: async ({ req, res }) => ({
+     
+  })}
+  ));
   return app;
 }
