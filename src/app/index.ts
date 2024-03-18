@@ -4,6 +4,7 @@ import cors from "cors"
 import express from 'express';
 import bodyParser from 'body-parser';
 import { User } from './user';
+import JWT_SERVICE from '../services/jwt';
 
 export async function initServer() {
   const app = express();
@@ -20,10 +21,11 @@ export async function initServer() {
 
   await server.start();
 
-  app.use('/graphql', expressMiddleware(server, 
-  {context: async ({ req, res }) => ({
-     
-  })}
-  ));
+  app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req, res }) => ({
+      user: req.headers.authorization ? JWT_SERVICE.decodeToken(req.headers.authorization) : undefined
+    })
+  }));
+  
   return app;
 }

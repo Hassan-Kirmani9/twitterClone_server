@@ -3,5 +3,7 @@
 export const queries = `
   type Query {
     verifyGoogleToken(token: String!): String
+    getCurrentUser: User
+  
   }
 `;

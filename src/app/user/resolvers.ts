@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 import axios, { AxiosError } from "axios";
 import { prisma_client } from "../../clients/db";
 import JWT_SERVICE from "../../services/jwt";
+import { GqlContext } from "../../interfaces";
+import { User } from ".";
 interface GoogleTokenResult {
     iss?: string;
     azp?: string;
@@ -69,5 +71,8 @@ export const resolvers = {
         throw error;
       }
     },
+    getCurrentUser: async(parent:any , args: any , ctx: GqlContext)=>{
+      return ctx.user
+    }
   },
 };

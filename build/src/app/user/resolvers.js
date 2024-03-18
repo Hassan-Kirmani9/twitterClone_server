@@ -56,5 +56,8 @@ exports.resolvers = {
                 throw error;
             }
         }),
+        getCurrentUser: (parent, args, ctx) => __awaiter(void 0, void 0, void 0, function* () {
+            return ctx.user;
+        })
     },
 };
